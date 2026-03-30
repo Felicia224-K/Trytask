@@ -1,12 +1,15 @@
-const express = require('express');
-const { connectDB, sequelize } = require('../config/database');
 require('dotenv').config();
+const express = require('express');
+const  { sequelize }  = require('./config/database');
+
+
+require ('./models');
+
 
 const app = express();
-
 app.use(express.json());
 
-connectDB();
+
 
 sequelize.sync({after: true })
     .then (()=> 
